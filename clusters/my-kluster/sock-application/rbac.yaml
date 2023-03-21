@@ -33,5 +33,5 @@ subjects:
   name: gotk:app:reconciler
 - kind: ServiceAccount
   name: sock-app
-  namespace: app
+  namespace: sock-shop
 
