@@ -1,0 +1,26 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: sock-app
+  namespace: app
+spec:
+  interval: 1m0s
+  ref:
+    branch: master
+  url: https://github.com/gladysgodwin/microservices-demo
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: sock-app
+  namespace: app
+spec:
+  interval: 1m0s
+  path: ./deploy/kubernetes/manifests
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: sock-app
+
