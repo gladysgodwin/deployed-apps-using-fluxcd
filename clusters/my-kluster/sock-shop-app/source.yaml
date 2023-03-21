@@ -7,6 +7,6 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
-  url: https://github.com/microservices-demo/microservices-demo
+    branch: master
+  url: https://github.com/gladysgodwin/microservices-demo
 
