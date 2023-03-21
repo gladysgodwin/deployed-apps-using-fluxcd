@@ -19,8 +19,8 @@ metadata:
 spec:
   interval: 1m0s
   path: ./deploy/kubernetes/manifests
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: sock-app
-  targetNamespace: app
+  targetNamespace: sock-shop
