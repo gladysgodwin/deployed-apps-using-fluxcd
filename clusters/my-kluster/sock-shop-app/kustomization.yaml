@@ -11,5 +11,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: sock-app
-  targetNamespace: sock-shop-app
+  targetNamespace: app
 
