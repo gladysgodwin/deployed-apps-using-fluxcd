@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: http-response-codes
+  namespace: monitoring
+spec:
+  groups:
+  - name: http-response-codes
+    rules:
+    - alert: HTTPResponseNotOK
+      expr: |
+        sum by (code) (rate(http_server_responses_total{code=~"1..|2..|3..|4..|5.."}[1m]))
+        * on (code) group_left()
+          count by (code) (up{job="my-http-service"}) != count by (code) (http_server_responses_total{job="my-http-service"})
+      for: 1m
+      labels:
+        severity: warning
+      annotations:
+        summary: "HTTP response code not 2xx"
+        description: "{{ $labels.code }} {{ $value }} HTTP responses with code other than 2xx were returned by my-http-service."
+
+  - name: Flux
+    rules:
+      - alert: ReconciliationFailure
+        expr: max(gotk_reconcile_condition{status="False",type="Ready"}) by (exported_namespace, name, kind) + on(exported_namespace, name, kind) (max(gotk_reconcile_condition{status="Deleted"}) by (exported_namespace, name, kind)) * 2 == 1
+        for: 10m
+        labels:
+          severity: page
+        annotations:
+          summary: '{{ $labels.kind }} {{ $labels.exported_namespace }}/{{ $labels.name }} reconciliation has been failing for more than ten minutes.'

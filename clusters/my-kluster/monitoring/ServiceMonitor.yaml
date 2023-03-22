@@ -1,0 +1,20 @@
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: myapps-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: sock-app
+      app: portfolio
+  endpoints:
+    - port: http
+      path: /metrics
+      scheme: http
+      interval: 30s
+  namespaceSelector:
+    matchNames:
+      - app
+      - sock-shop
