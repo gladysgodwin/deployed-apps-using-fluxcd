@@ -5,7 +5,7 @@ metadata:
   namespace: app
 spec:
   rules:
-  - host: portfolio.praestohealth.com.ng
+  - host: praestohealth.com.ng
     http:
       paths:
       - pathType: Prefix
