@@ -8,7 +8,6 @@ spec:
   selector:
     matchLabels:
       app: sock-app
-      app: portfolio
   endpoints:
     - port: http
       path: /metrics
