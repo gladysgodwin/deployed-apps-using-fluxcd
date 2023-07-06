@@ -12,3 +12,6 @@ All these was Deployed with flux and kubernetes and terraform to build my infras
 I also created an nginx ingress for my portfolio app.
 
 Created a loadbalancer for my app and registered my domain in route53 to route traffic to my Loadbalancers.
+
+
+![sockshop](https://github.com/gladysgodwin/deployed-apps-using-fluxcd/assets/99274632/90c512ee-7979-4618-9eb3-57df1d35dd10)
